@@ -32,7 +32,7 @@ public class Main {
             itemRepository.add(item);
 
             System.out.print("Upload another item? [Y/N] ");
-            doneUploadingItems = scanner.next().equalsIgnoreCase("y");
+            doneUploadingItems = scanner.next().equalsIgnoreCase("n");
         }
 
 
@@ -56,7 +56,7 @@ public class Main {
             pricingRules.put(pricingRuleSKU, new PricingRule(pricingRuleQuantity, pricingRulePrice));
 
             System.out.print("Upload another rule? [Y/N] ");
-            doneUploadingRules = scanner.next().equalsIgnoreCase("y");
+            doneUploadingRules = scanner.next().equalsIgnoreCase("n");
         }
 
 
@@ -70,7 +70,7 @@ public class Main {
                 System.out.println("Running Total: " + checkoutService.getRunningTotal());
 
                 System.out.print("Scan another item? [Y/N] ");
-                doneScanningItems = scanner.next().equalsIgnoreCase("y");
+                doneScanningItems = scanner.next().equalsIgnoreCase("n");
             } catch (IllegalArgumentException ex) {
                 System.out.println(ex.getMessage());
             }
