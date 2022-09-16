@@ -27,6 +27,7 @@ public class CheckoutServiceImpl implements CheckoutService {
 
     @Override
     public int getRunningTotal() {
+        // Assumption made is running total is unit price of all items before discount is applied
         int runningTotal = 0;
         for (Map.Entry<Item, Integer> cartItem : cart.entrySet()) {
             runningTotal += cartItem.getKey().getUnitPrice() * cartItem.getValue();
@@ -36,6 +37,10 @@ public class CheckoutServiceImpl implements CheckoutService {
 
     @Override
     public int getFinalTotal() {
+        /* To solve this,
+        * I looped through all cart items and checked if the pricing rules contained any offer for the current item
+        * Then I got the cart quantity and divided by offer criteria
+        * */
         int finalTotal = 0;
         for (Map.Entry<Item, Integer> cartItem : cart.entrySet()) {
             if (pricingRules.containsKey(cartItem.getKey().getSku()) && pricingRules.get(cartItem.getKey().getSku()).getQuantity() > 1) {
